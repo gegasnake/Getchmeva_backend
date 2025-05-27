@@ -2,12 +2,40 @@ from django.db import models
 
 
 class Product(models.Model):
-    barcode = models.CharField(max_length=100, primary_key=True)
-    name = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
+    barcode = models.BigIntegerField(primary_key=True)  # barcode
+    url = models.TextField(blank=True)
+    name = models.TextField(blank=True)
+    generic_name = models.TextField(blank=True)
+    quantity = models.TextField(blank=True)
+    brands = models.TextField(blank=True)
+    categories = models.TextField(blank=True)
+    ingredients_text = models.TextField(blank=True)
+    ingredients_analysis = models.TextField(blank=True)
+    allergens = models.TextField(blank=True)
+    traces = models.TextField(blank=True)
+    serving_size = models.TextField(blank=True)
+    serving_quantity = models.TextField(blank=True)
+    no_nutrition_data = models.TextField(blank=True)
+    additives = models.TextField(blank=True)
+    nutriscore_score = models.TextField(blank=True)
+    nutriscore_grade = models.TextField(blank=True)
+    nova_group = models.TextField(blank=True)
+    ecoscore_score = models.TextField(blank=True)
+    ecoscore_grade = models.TextField(blank=True)
+    unique_scans_n = models.IntegerField(blank=True, null=True)
+    popularity_tags = models.TextField(blank=True)
+    last_image_t = models.BigIntegerField(blank=True, null=True)
+    last_image_datetime = models.TextField(blank=True)
+    image_url = models.TextField(blank=True)
+    image_small_url = models.TextField(blank=True)
+    image_ingredients_url = models.TextField(blank=True)
+    image_ingredients_small_url = models.TextField(blank=True)
+    image_nutrition_url = models.TextField(blank=True)
+    image_nutrition_small_url = models.TextField(blank=True)
+    energy_100g = models.TextField(blank=True)
+    fat_100g = models.TextField(blank=True)
     is_vegan = models.BooleanField()
     image = models.ImageField(upload_to='product_images/', blank=True, null=True)
 
     def __str__(self):
-        return self.name
-
+        return self.name or str(self.barcode)
