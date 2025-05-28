@@ -1,0 +1,19 @@
+# docker-compose.yml
+
+version: '3.9'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8001:8001"
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-20gt*mr36&4%64!qb!a=qn30!ieeldk+n-o!#sw5fk+8vhpxm_
+      - DB_NAME=postgres
+      - DB_USER=postgres.kjhkpjvgzbwodtgpzomw
+      - DB_PASSWORD=9pchsSLnvNYprFf7
+      - DB_HOST=aws-0-ap-southeast-1.pooler.supabase.com
+      - DB_PORT=6543
+    volumes:
+      - .:/app
